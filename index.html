@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TecnoNúcleo — Potencia que impulsa tu mundo digital</title>
+
+  <!-- Google Fonts: Montserrat (titulo) y Roboto (texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <meta name="description" content="TecnoNúcleo — tienda de ordenadores y componentes. Portátiles, sobremesas, PCs gaming y soluciones a medida." />
+
+  <style>
+    /* -------------------------
+       Variables de color y tipografías
+       ------------------------- */
+    :root{
+      --blue: #1A73E8;        /* Azul eléctrico */
+      --graphite: #2E2E2E;    /* Gris grafito */
+      --white: #FFFFFF;
+      --neon: #32FFB2;        /* Verde neón */
+      --muted: #6b6b6b;
+      --bg-dark: #0f1113;
+      --radius: 12px;
+      --max-width: 1100px;
+      --shadow: 0 6px 18px rgba(16,24,40,0.35);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--graphite);
+      background: linear-gradient(180deg, #fbfdff 0%, #f7f9fc 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container{
+      width: calc(100% - 2rem);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* -------------------------
+       Header
+       ------------------------- */
+    header{
+      position: sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .nav-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding: 1rem 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+    }
+
+    /* Logo SVG size */
+    .logo {
+      width:48px;
+      height:48px;
+      flex: 0 0 48px;
+    }
+    .brand h1{
+      margin:0;
+      font-family: "Montserrat", sans-serif;
+      font-weight:700;
+      font-size:1.05rem;
+      color:var(--graphite);
+      letter-spacing: -0.02em;
+    }
+    .tagline{
+      font-size:0.75rem;
+      color:var(--muted);
+      margin-top:2px;
+      margin-left:2px;
+    }
+
+    nav{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      margin-left:auto;
+    }
+
+    nav a{
+      padding:0.5rem 0.6rem;
+      border-radius:8px;
+      font-weight:500;
+      color:var(--graphite);
+    }
+
+    nav a.cta{
+      background: linear-gradient(90deg,var(--blue), #2AA0FF);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    /* Mobile menu button */
+    .mobile-toggle{
+      display:none;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+    }
+
+    /* -------------------------
+       Hero
+       ------------------------- */
+    .hero{
+      padding: 3.25rem 0 2.25rem;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:2rem;
+      align-items:center;
+    }
+
+    .hero-left h2{
+      font-family: "Montserrat", sans-serif;
+      font-size:2.05rem;
+      margin:0 0 0.5rem 0;
+      color:var(--graphite);
+      line-height:1.05;
+    }
+
+    .hero-left p.lead{
+      margin:0 0 1.25rem 0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .buttons{
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+    }
+
+    .btn{
+      padding:0.7rem 1rem;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      border:0;
+    }
+    .btn.primary{
+      background:var(--blue);
+      color:var(--white);
+    }
+    .btn.ghost{
+      background:transparent;
+      border:1px solid rgba(46,46,46,0.08);
+      color:var(--graphite);
+    }
+
+    /* Hero product card */
+    .card-hero{
+      background: linear-gradient(180deg, #0b0f13 0%, #0e1319 100%);
+      color:var(--white);
+      border-radius: 14px;
+      padding:1rem;
+      box-shadow: 0 10px 30px rgba(10,20,40,0.5);
+      display:flex;
+      flex-direction:column;
+      gap:0.75rem;
+    }
+    .pc-image{
+      width:100%;
+      height:220px;
+      border-radius:10px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(255,255,255,0.25);
+      font-size:0.95rem;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    .price{
+      font-family: "Montserrat", sans-serif;
+      font-size:1.35rem;
+      color:var(--neon);
+    }
+
+    /* -------------------------
+       Sections generales
+       ------------------------- */
+    section{
+      padding: 2.25rem 0;
+    }
+
+    h3.section-title{
+      margin:0 0 1rem 0;
+      font-family: "Montserrat", sans-serif;
+      font-size:1.15rem;
+      color:var(--graphite);
+    }
+
+    p.lead-muted{ color:var(--muted); margin:0 0 1.25rem 0; }
+
+    /* Productos grid */
+    .product-grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:1rem;
+    }
+
+    .product{
+      background: white;
+      border-radius:12px;
+      padding:1rem;
+      box-shadow: 0 8px 20px rgba(16,24,40,0.06);
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .product:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(16,24,40,0.12);
+    }
+
+    .product .thumb{
+      width:84px;
+      height:64px;
+      border-radius:8px;
+      background: linear-gradient(135deg,var(--blue),var(--neon));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-family: "Montserrat", sans-serif;
+      font-size:0.95rem;
+      flex:0 0 84px;
+    }
+
+    .product .meta h4{ margin:0; font-size:0.95rem; }
+    .product .meta p{ margin:0.25rem 0 0 0; color:var(--muted); font-size:0.85rem; }
+
+    /* Services */
+    .services{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+    .service{
+      flex:1 1 220px;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      border-radius:12px;
+      padding:1rem;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.05);
+    }
+
+    /* About and contact */
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:1rem;
+      align-items:start;
+    }
+
+    /* Footer */
+    footer{
+      padding:1.5rem 0;
+      border-top:1px solid rgba(0,0,0,0.04);
+      background: linear-gradient(180deg,#fbfdff,#f6f8fb);
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .socials a{
+      display:inline-block;
+      margin-left:0.5rem;
+      padding:0.45rem;
+      border-radius:8px;
+      background:rgba(30,30,30,0.04);
+    }
+
+    /* -------------------------
+       Responsive
+       ------------------------- */
+    @media (max-width:980px){
+      .hero{ grid-template-columns: 1fr; }
+      .product-grid{ grid-template-columns: repeat(2,1fr); }
+      .split{ grid-template-columns:1fr; }
+    }
+
+    @media (max-width:700px){
+      .nav-toggle { display:block; }
+      nav{ display:none; }
+      .mobile-toggle{ display:block; }
+      .product-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Mobile menu visible state */
+    .nav-open nav{
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
+      margin-top:0.75rem;
+    }
+
+    /* Small helpers */
+    .muted{ color:var(--muted); }
+    .small{ font-size:0.9rem; }
+    .pill{ display:inline-block; padding:0.25rem 0.6rem; border-radius:999px; background: rgba(26,115,232,0.08); color:var(--blue); font-weight:600; font-size:0.8rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav-row" id="topbar">
+      <div class="brand" aria-label="TecnoNúcleo">
+        <!-- Inline SVG logo: hexagon + stylized N with circuit lines -->
+        <svg class="logo" viewBox="0 0 100 100" role="img" aria-labelledby="logoTitle logoDesc">
+          <title id="logoTitle">Logotipo TecnoNúcleo</title>
+          <desc id="logoDesc">Hexágono azul con letra N estilizada en verde neón con detalles de circuito.</desc>
+          <!-- Hexagon -->
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#1A73E8"/>
+              <stop offset="1" stop-color="#2AA0FF"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(10,10) scale(0.8)">
+            <polygon points="50,2 91,26 91,74 50,98 9,74 9,26"
+              fill="url(#g1)"/>
+            <!-- N stylized: main strokes -->
+            <path d="M34 30 L46 62 L66 28 L66 72" stroke="#32FFB2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- circuit dots -->
+            <circle cx="38" cy="34" r="2.4" fill="#32FFB2"/>
+            <circle cx="62" cy="60" r="2.4" fill="#32FFB2"/>
+          </g>
+        </svg>
+
+        <div>
+          <h1>TecnoNúcleo</h1>
+          <div class="tagline">Potencia que impulsa tu mundo digital</div>
+        </div>
+      </div>
+
+      <button class="mobile-toggle" id="menuBtn" aria-expanded="false" aria-controls="mainNav" title="Abrir menú">
+        <!-- simple hamburger -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="#222" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <nav id="mainNav" aria-label="Navegación principal">
+        <a href="#productos">Productos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto" class="cta">Contacto / Presupuesto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-left">
+        <h2 id="heroTitle">Ordenadores potentes. Asesoramiento profesional. Servicio cercano.</h2>
+        <p class="lead">En <strong>TecnoNúcleo</strong> diseñamos PCs y ofrecemos portátiles seleccionados para trabajo, creación y gaming. Montajes a medida, garantía y soporte técnico.</p>
+
+        <div class="buttons">
+          <a class="btn primary" href="#productos">Ver productos destacados</a>
+          <a class="btn ghost" href="#servicios">Nuestros servicios</a>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <span class="pill">Envío 24-48h</span>
+          <span style="margin-left:0.6rem;" class="muted small">Financiación disponible &bull; Garantía 2 años</span>
+        </div>
+      </div>
+
+      <aside class="card-hero" aria-label="PC destacado">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.85rem; color:rgba(255,255,255,0.7)">PC Gaming / Creator</div>
+            <div style="font-size:1.15rem; font-weight:700; margin-top:0.25rem">Núcleo X-900</div>
+            <div class="price">1.499 €</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.9rem; color:rgba(255,255,255,0.7)">Disponible</div>
+            <div style="font-size:0.8rem; margin-top:0.2rem">Stock: limitado</div>
+          </div>
+        </div>
+
+        <div class="pc-image" role="img" aria-label="Imagen representativa de PC">
+          Imagen del equipo (coloca aquí una foto real)
+        </div>
+
+        <div style="display:flex; gap:0.5rem; justify-content:space-between; align-items:center;">
+          <div class="small muted">Intel i7 · RTX 4070 · 32GB RAM · 1TB NVMe</div>
+          <a class="btn primary" href="#contacto" style="font-size:0.9rem;">Pedir presupuesto</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Productos destacados -->
+    <section id="productos" aria-labelledby="prodTitle">
+      <h3 id="prodTitle" class="section-title">Productos destacados</h3>
+      <p class="lead-muted">Selección curada de ordenadores y accesorios para cubrir diferentes necesidades.</p>
+
+      <div class="product-grid" role="list">
+        <article class="product" role="listitem" aria-label="Portátil Ultraligero">
+          <div class="thumb">LU</div>
+          <div class="meta">
+            <h4>Portátil Ultraligero Z13</h4>
+            <p>14" FHD · Ryzen 7 · 16GB · 512GB · Ideal para trabajo móvil</p>
+          </div>
+        </article>
+
+        <article class="product" role="listitem" aria-label="PC Gaming">
+          <div class="thumb">GX</div>
+          <div class="meta">
+            <h4>Gaming Núcleo X-900</h4>
+            <p>RTX 4070 · i7 · 32GB · Refrigeración líquida</p>
+          </div>
+        </article>
+
+        <article class="product" role="listitem" aria-label="Estación de trabajo">
+          <div class="thumb">WS</div>
+          <div class="meta">
+            <h4>WorkStation Pro 700</h4>
+            <p>Threadripper · 64GB · ECC · Ideal diseño y edición 3D</p>
+          </div>
+        </article>
+
+        <article class="product" role="listitem" aria-label="Monitor 4K">
+          <div class="thumb">4K</div>
+          <div class="meta">
+            <h4>Monitor 27" 4K IPS</h4>
+            <p>Calibrado, colores precisos, 60Hz — perfecto para creadores</p>
+          </div>
+        </article>
+
+        <article class="product" role="listitem" aria-label="SSD NVMe">
+          <div class="thumb">NV</div>
+          <div class="meta">
+            <h4>NVMe 1TB</h4>
+            <p>Alta velocidad de lectura/escritura, ideal para cargas pesadas</p>
+          </div>
+        </article>
+
+        <article class="product" role="listitem" aria-label="Kit de montaje">
+          <div class="thumb">MK</div>
+          <div class="meta">
+            <h4>Kit Montaje DIY</h4>
+            <p>Fuentes modulares, cajas ventiladas y guías de montaje</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" aria-labelledby="servTitle">
+      <h3 id="servTitle" class="section-title">Servicios</h3>
+      <p class="lead-muted">Más que vender: montamos, configuramos y damos soporte.</p>
+
+      <div class="services">
+        <div class="service" role="article" aria-label="Montaje a medida">
+          <h4 style="margin-top:0; font-family:Montserrat;">Montaje a medida</h4>
+          <p class="muted small">Asesoramiento personalizado según presupuesto y uso.</p>
+          <ul class="small muted">
+            <li>Selección de componentes</li>
+            <li>Optimización térmica</li>
+            <li>Pruebas y entrega con software preinstalado</li>
+          </ul>
+        </div>
+
+        <div class="service" role="article" aria-label="Soporte técnico">
+          <h4 style="margin-top:0; font-family:Montserrat;">Soporte técnico</h4>
+          <p class="muted small">Servicio post-venta y reparaciones rápidas.</p>
+          <ul class="small muted">
+            <li>Diagnóstico en 24-48h</li>
+            <li>Actualizaciones y limpieza de hardware</li>
+            <li>Recuperación de datos</li>
+          </ul>
+        </div>
+
+        <div class="service" role="article" aria-label="Garantía y Financiación">
+          <h4 style="margin-top:0; font-family:Montserrat;">Garantía y financiación</h4>
+          <p class="muted small">Planes flexibles adaptados a tus necesidades.</p>
+          <ul class="small muted">
+            <li>Garantía de 2 años en equipos</li>
+            <li>Planes de pago en 3-12 meses</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About + Contact split -->
+    <section id="nosotros" aria-labelledby="aboutTitle">
+      <div class="split">
+        <div>
+          <h3 id="aboutTitle" class="section-title">Sobre TecnoNúcleo</h3>
+          <p class="lead-muted">Somos un equipo de entusiastas de la tecnología: montadores, técnicos y consultores con años de experiencia en hardware y servicios profesionales.</p>
+
+          <p class="muted small">
+            Misión: Ofrecer soluciones informáticas fiables y transparentes.<br>
+            Visión: Ser el punto de referencia local para profesionales creativos, jugadores y empresas.
+          </p>
+
+          <h4 style="margin-top:1rem; font-family:Montserrat;">Valores</h4>
+          <ul class="small muted">
+            <li>Transparencia en precios y componentes</li>
+            <li>Atención cercana y soporte rápido</li>
+            <li>Compromiso con la calidad</li>
+          </ul>
+        </div>
+
+        <div id="contacto" aria-labelledby="contactTitle">
+          <h3 id="contactTitle" class="section-title">Contacto / Solicitar presupuesto</h3>
+          <p class="lead-muted">Rellena el formulario y te responderemos en 24-48h.</p>
+
+          <!-- Formulario (no conectado, ejemplo) -->
+          <form id="contactForm" onsubmit="submitForm(event)" style="display:flex; flex-direction:column; gap:0.6rem;">
+            <label class="small">Nombre
+              <input required type="text" name="name" placeholder="Tu nombre" style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #e6e9ef;">
+            </label>
+
+            <label class="small">Email
+              <input required type="email" name="email" placeholder="tu@correo.com" style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #e6e9ef;">
+            </label>
+
+            <label class="small">Mensaje / Requerimiento
+              <textarea required name="message" rows="5" placeholder="Describe lo que necesitas" style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid #e6e9ef;"></textarea>
+            </label>
+
+            <div style="display:flex; gap:0.5rem;">
+              <button type="submit" class="btn primary">Enviar solicitud</button>
+              <button type="reset" class="btn ghost" style="border:1px solid rgba(0,0,0,0.06)">Limpiar</button>
+            </div>
+
+            <div id="formMsg" class="small muted" aria-live="polite" style="margin-top:0.4rem;"></div>
+          </form>
+
+          <div style="margin-top:1rem; font-size:0.9rem;" class="muted">
+            <strong>Dirección:</strong> Calle Ejemplo 12, 28001 Madrid<br>
+            <strong>Tel:</strong> +34 600 000 000 · <strong>Email:</strong> info@tecnonucleo.example
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <strong>TecnoNúcleo</strong> — Potencia que impulsa tu mundo digital<br>
+          <span class="muted small">© <span id="year"></span> TecnoNúcleo. Todos los derechos reservados.</span>
+        </div>
+
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <div class="socials" aria-label="Redes sociales">
+            <a href="#" title="Twitter" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 5.9c-.6.3-1.2.5-1.9.6.7-.4 1.2-1 1.5-1.7-.6.4-1.3.6-2 .8C18.7 4.9 17.8 4.5 16.8 4.5c-1.8 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.8-2.6-.1-4.9-1.4-6.4-3.4-.3.5-.5 1-.5 1.6 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.5v.1c0 1.6 1.1 2.8 2.6 3.1-.4.1-.8.1-1.2.1-.3 0-.6 0-.9-.1.6 1.9 2.5 3.3 4.6 3.3-1.7 1.3-3.7 2-5.9 2-.4 0-.8 0-1.2-.1C6.8 20 9.2 21 11.8 21c7.1 0 11-6 11-11.2v-.5c.7-.5 1.2-1.1 1.6-1.8-.6.3-1.3.5-2 .6z" fill="#333"/></svg>
+            </a>
+            <a href="#" title="Instagram" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5A4.5 4.5 0 1 0 16.5 13 4.5 4.5 0 0 0 12 8.5zm4.9-3.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z" fill="#333"/></svg>
+            </a>
+            <a href="#" title="Facebook" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 12.07C22 6.53 17.52 2 12 2S2 6.53 2 12.07c0 5 3.66 9.13 8.44 9.93v-7.04H7.9v-2.9h2.53V9.4c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6v1.9h2.9l-.5 2.9h-2.4v7.05C18.34 21.2 22 17.07 22 12.07z" fill="#333"/></svg>
+            </a>
+          </div>
+
+          <div class="muted small">Soporte: soporte@tecnonucleo.example</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const topbar = document.getElementById('topbar');
+      menuBtn.addEventListener('click', () => {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!expanded));
+        document.body.classList.toggle('nav-open');
+      });
+    })();
+
+    // Simple form handler (demo): prevent actual submit, show message
+    function submitForm(e){
+      e.preventDefault();
+      const msg = document.getElementById('formMsg');
+      msg.textContent = 'Gracias — tu solicitud ha sido registrada. Te contactaremos pronto.';
+      e.target.reset();
+      // In producción: enviar por fetch a tu backend o usar un servicio de formularios
+    }
+  </script>
+</body>
+</html>
